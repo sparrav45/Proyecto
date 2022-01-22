@@ -1,0 +1,201 @@
+<%#= form_with(model: documentos_pedido, :id=>'form_pedido') do |form| %>
+<%= form_with(model: documentos_pedido) do |form| %>
+  <% if documentos_pedido.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(documentos_pedido.errors.count, "error") %> prohibited this documentos pedidos from being saved:</h2>
+
+      <ul>
+        <% documentos_pedido.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nit %>
+    <%= form.number_field :nit %>
+  </div>
+
+   <div class="field">
+    <%= form.label :tercero %>
+    <%= form.text_field :tercero %>
+  </div>
+
+ <div class="field">
+    <%= form.label :id_clase %>
+    <%= form.text_field :id_clase %>
+  </div>
+
+  <div class="field">
+    <%= form.label :clase %>
+    <%= form.text_field :clase %>
+  </div>
+
+    <div class="field">
+    <%= form.label :iva %>
+    <%= form.text_field :iva %>
+  </div>
+
+  <div class="field">
+    <%= form.label :valor_total %>
+    <%= form.text_field :valor_total %>
+  </div>
+
+<div class="field">
+    <%= form.hidden_field :usuario_id ,:value =>"15" %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :estado_id,:value =>"1" %>
+  </div>
+
+  <!--<button id="btnExportar">Exportar</button>-->
+  <div class='btn_options'>
+    <span class='btn_download_csv' id='btnExportar'></span>
+  </div>
+
+  <table class="table" id="table_clase">
+    <thead>
+      <tr>
+        <th>codigo</th>
+        <th>Descripcion</th>
+        <th><%= I18n.l(Date.today - 6.month, format: '%b') %></th>
+        <th><%= I18n.l(Date.today - 5.month, format: '%b') %></th>
+        <th><%= I18n.l(Date.today - 4.month, format: '%b') %></th>
+        <th><%= I18n.l(Date.today - 3.month, format: '%b') %></th>
+        <th><%= I18n.l(Date.today - 2.month, format: '%b') %></th>
+        <th><%= I18n.l(Date.today - 1.month, format: '%b') %></th>
+        <th>Mes Actual</th>
+        <th>Total<br> Rotacion</th>
+        <th>Stock</th>
+        <th>Costo<br>Unitario</th>
+        <th>cantidad</th>
+      </tr>
+    </thead>
+
+    <tbody>
+        <% if @datos %>
+          <% @datos.each do |dato| %> 
+              <%= form.fields_for :documentos_lin_pedidos do |f| %>
+                    <tr>
+                            <td><%= f.text_field :codigo, :size=>"10", :value =>(dato[:a]), :readonly => true  %></td>
+                            <!--<td class='left_txt'><%#= label_tag :codigo , dato[:a] %></td>-->
+                            <td><%= f.text_area  :descripcion, :size=>"30", :value =>(dato[:b]), :readonly => true %></td>
+                            <!--<td class='left_txt'><%#= dato[:b] %></td>-->
+                            <td class='right_txt'><%= label_tag  :mes1, dato[:c] %></td>
+                            <td class='right_txt'><%= label_tag  :mes2, dato[:d] %></td>
+                            <td class='right_txt'><%= label_tag  :mes3, dato[:e] %></td>
+                            <td class='right_txt'><%= label_tag  :mes4, dato[:f] %></td>
+                            <td class='right_txt'><%= label_tag  :mes5, dato[:g] %></td>
+                            <td class='right_txt'><%= label_tag  :mes6, dato[:h] %></td>
+                            <td class='right_txt'><%= label_tag  :mes_actual, dato[:i]%></td>
+                            <td class='right_txt'><%= label_tag  :total_rotacion, dato[:j] %></td>
+                            <td class='right_txt'><%= label_tag  :stock, dato[:k]%></td>
+                            <td><%= f.text_field :costo_unitario, :size=>"10", :value =>(dato[:l]), :readonly => true, :clase =>'right_txt'  %></td>
+                            <!--<td class='right_txt'><%#= label_tag :costo_unitario, dato[:l] %></td>-->
+                            <td><%= f.number_field :cantidad , :id=>"cantidad" %></td>
+                    </tr>   
+              <% end %>
+          <% end %>
+        <% end %>
+    </tbody>
+  </table>
+
+
+  <!--<div class='Table'>
+    <div class="Heading">
+      <div class="Cell">
+        <p>codigo</p>
+      </div>
+      <div class="Cell">
+        <p>Descripcion</p>
+      </div>
+      <div class="Cell">
+        <p><%= I18n.l(Date.today - 6.month, format: '%B') %></p>
+      </div>
+      <div class="Cell">
+        <p><%= I18n.l(Date.today - 5.month, format: '%B') %></p>
+      </div>
+      <div class="Cell">
+        <p><%= I18n.l(Date.today - 4.month, format: '%B') %></p>
+      </div>
+      <div class="Cell">
+        <p><%= I18n.l(Date.today - 3.month, format: '%B') %></p>
+      </div>
+      <div class="Cell">
+        <p><%= I18n.l(Date.today - 2.month, format: '%B') %><p>
+      </div>
+      <div class="Cell">
+        <p><%= I18n.l(Date.today - 1.month, format: '%B') %></p>
+      </div>
+      <div class="Cell">
+        <p>Mes Actual</p>
+      </div>
+      <div class="Cell">
+        <p>Total Rotacion</p>
+      </div>
+      <div class="Cell">
+        <p>Stock</p>
+      </div>
+      <div class="Cell">
+        <p>Costo Unitario</p>
+      </div>
+      <div class="Cell">
+        <p>cantidad</p>
+      </div>
+    </div>
+    
+    <% if @datos %>
+      <% @datos.each do |dato| %> 
+        <div class="Row">
+          <%= form.fields_for :documentos_lin_pedidos do |f| %>
+                          <div class="Cell">
+                            <p><%= f.text_field :codigo, :size=>"10", :value =>(dato[:a]), :readonly => true  %></p>
+                          </div>
+                          <div class="Cell">
+                            <p><%= f.text_area  :descripcion, :size=>"30", :value =>(dato[:b]), :readonly => true %></p>
+                          </div>
+                          <div class="Cell">
+                            <p><%= label_tag  :mes1, dato[:c] %></p>
+                          </div>
+                          <div class="Cell">
+                            <p><%= label_tag  :mes2, dato[:d] %></p>
+                          </div>
+                          <div class="Cell">
+                            <p><%= label_tag  :mes3, dato[:e] %></p>
+                          </div>
+                          <div class="Cell">
+                            <p><%= label_tag  :mes4, dato[:f] %></p>
+                          </div>
+                          <div class="Cell">
+                            <p><%= label_tag  :mes5, dato[:g] %></p>
+                          </div>
+                          <div class="Cell">
+                            <p><%= label_tag  :mes6, dato[:h] %></p>
+                          </div>
+                          <div class="Cell">
+                            <p><%= label_tag  :mes_actual, dato[:i]%></p>
+                          </div>
+                          <div class="Cell">
+                            <p><%= label_tag  :total_rotacion, dato[:j] %></p>
+                          </div>
+                          <div class="Cell">
+                            <p><%= label_tag  :stock, dato[:k]%></p>
+                          </div>
+                          <div class="Cell">
+                            <p><%= f.text_field :costo_unitario, :size=>"10", :value =>(dato[:l]), :readonly => true  %></p>
+                          </div>
+                         <div class="Cell">
+                            <p><%= f.number_field :cantidad  %></p>
+                          </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>-->
+  <div>
+  <div class="actions">
+      <%= form.submit %>
+  </div>
+<% end %>

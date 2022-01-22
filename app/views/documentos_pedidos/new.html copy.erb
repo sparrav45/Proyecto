@@ -1,0 +1,109 @@
+<h1>New Documento</h1>
+
+<%= form_with(model: @documentos_pedido) do |form| %>
+  <% if @documentos_pedido.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@documentos_pedido.errors.count, "error") %> prohibited this usuario from being saved:</h2>
+
+      <ul>
+        <% @documentos_pedido.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<% @usuarios_clase.each do |usuarios_clase| %>
+
+  <div class="field">
+    <%= form.label :nit %>
+    <%= form.number_field :nit, :value => usuarios_clase.nit, :readonly => true %>
+  </div>
+
+   <div class="field">
+    <%= form.label :tercero %>
+    <%= form.text_field :tercero, :value => usuarios_clase.proveedor, :readonly => true %>
+  </div>
+
+ <div class="field">
+    <%= form.label :id_clase %>
+    <%= form.text_field :id_clase, :readonly => true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :clase %>
+    <%= form.text_field :clase, :value => usuarios_clase.descripcion_clase, :readonly => true %>
+  </div>
+
+    <div class="field">
+    <%= form.label :iva %>
+    <%= form.text_field :iva %>
+  </div>
+
+  <div class="field">
+    <%= form.label :valor_total %>
+    <%= form.text_field :valor_total %>
+  </div>
+
+<% end %>
+
+  <div class="field">
+    <%= form.hidden_field :usuario_id , :value=> current_user.id %>
+  </div>
+  
+  <div class="field">
+    <%= form.hidden_field :estado_id , :value=> 1 %>
+  </div>
+
+  <table>
+   <thead>
+     <tr>
+       <th>codigo</th>
+       <th>Descripcion</th>
+       <th><%= I18n.l(Date.today - 6.month, format: '%B') %></th>
+       <th><%= I18n.l(Date.today - 5.month, format: '%B') %></th>
+       <th><%= I18n.l(Date.today - 4.month, format: '%B') %></th>
+       <th><%= I18n.l(Date.today - 3.month, format: '%B') %></th>
+       <th><%= I18n.l(Date.today - 2.month, format: '%B') %></th>
+       <th><%= I18n.l(Date.today - 1.month, format: '%B') %></th>
+       <th>Mes Actual</th>
+       <th>Total_Rotacion</th>
+       <th>Stock</th>
+       <th>Costo_Unitario</th>
+       <th>cantidad</th>
+       <th colspan="3"></th>
+     </tr>
+   </thead>
+   <tbody>
+  <% if @datos %>
+  <% @datos.each do |dato| %> 
+   <%= form.fields_for :documentos_lin_pedidos do |f| %>
+
+                <tr>
+                         <td><%= f.text_field :codigo, :size=>"10", :value =>(dato[:a]), :readonly => true  %></td>
+                         <td><%= f.text_area  :descripcion, :size=>"30", :value =>(dato[:b]), :readonly => true %></td>
+                         <td><%= label_tag  :mes1, dato[:c] %></td>
+                         <td><%= label_tag  :mes2, dato[:d] %></td>
+                         <td><%= label_tag  :mes3, dato[:e] %></td>
+                         <td><%= label_tag  :mes4, dato[:f] %></td>
+                         <td><%= label_tag  :mes5, dato[:g] %></td>
+                         <td><%= label_tag  :mes6, dato[:h] %></td>
+                         <td><%= label_tag  :mes_actual, dato[:i]%></td>
+                         <td><%= label_tag  :total_rotacion, dato[:j] %></td>
+                         <td><%= label_tag  :stock, dato[:k]%></td>
+                         <td><%= f.text_field :costo_unitario, :size=>"10", :value =>(dato[:l]), :readonly => true  %></td>
+                         <td><%= f.number_field :cantidad   , :size=>"4"  %></td>                        
+                 </tr>
+          <% end %>
+          <% end %>
+          <% end %>
+      </tbody>
+
+    </table>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Back', usuario_documentos_pedidos_path(current_user.id) %>

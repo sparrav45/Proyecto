@@ -1,0 +1,52 @@
+// Place all the styles related to the usuarios_clases controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.menu_clases
+ {
+  overflow: hidden;
+  /*background-color: #CB690B;*/
+  background-color: #C1D1E5;
+  border-radius: 5px;
+ }
+
+ .menu_clases nav{
+  height: auto; /*Junto a overflow: hidden; aplicará a nuestro elemento nav el mismo alto que el más alto de sus elementos hijos */ 
+  margin: 0 auto; /* Centro el contenedor */
+  overflow: hidden;
+  text-align: left;
+  width: 960px; /* Defino el ancho de mi página */
+}
+ 
+
+
+ .menu_clases ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+  /*background-color: #0065A3;*/
+}
+
+.menu_clases li {
+  float: left;
+}
+
+.menu_clases li a {
+  display: block;
+  /*color: #C1D1E5;
+  color: #CB690B;*/
+  color: #FFFFFF;
+  text-align: center;
+  align-items: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font: 16px verdana;
+}
+
+/* Change the link color to #111 (black) on hover
+.menu_clases li a:hover {
+  background-color: #EB690B;
+}*/

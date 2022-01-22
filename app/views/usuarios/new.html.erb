@@ -1,0 +1,201 @@
+<!--<h1>Registro Nuevo Usuario</h1>
+
+<%#= form_with(model: @usuario) do |form| %>
+  <%# if @usuario.errors.any? %>
+    <div id="error_explanation">
+      <h2><%#= pluralize(@usuario.errors.count, "error") %> prohibited this usuario from being saved:</h2>
+
+      <ul>
+        <%# @usuario.errors.each do |error| %>
+          <li><%#= error.full_message %></li>
+        <%# end %>
+      </ul>
+    </div>
+  <%# end %>
+
+  <div class="field">
+    <%#= form.label :nit %>
+    <%#= form.number_field :nit, :value=> @nit %>
+  </div>
+
+  <div class="field">
+    <%#= form.label :cedula %>
+    <%#= form.number_field :cedula %>
+  </div>
+
+  <div class="field">
+    <%#= form.label :nombre %>
+    <%#= form.text_field :nombre %>
+  </div>
+
+  <div class="field">
+    <%#= form.label :apellido %>
+    <%#= form.text_field :apellido %>
+  </div>
+
+  <div class="field">
+    <%#= form.label :email %>
+    <%#= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%#= form.label :password %>
+    <%#= form.password_field :password, placeholder: "Password" %>
+  </div>
+
+  <div class="field">
+    <%#= form.hidden_field :rol_id, :value=>"2" %>
+  </div>
+
+
+  <table>
+   <thead>
+     <tr>
+       <th>codigo</th>
+
+       <th colspan="3"></th>
+     </tr>
+   </thead>
+   <tbody>
+   <%#contador=0%>
+    <%# @nit_clase.each do |nit_clase| %> 
+
+        <%#= form.fields_for :usuarios_clases do |f| %>
+        <tr>
+         
+                    <td><%#= check_box_tag "usuario[usuarios_clases_attributes][#{contador}][clase]",(nit_clase[:a]) %></td>
+                    <td><%#= f.text_field  :descripcion_clase, :value =>(nit_clase[:b]) %></td>
+                    <td><%#= f.hidden_field :nit, :value=> @nit%></td>
+                    <td><%#= f.hidden_field  :proveedor, :value => (nit_clase[:c]) %></td>
+                    <%#contador+=1%>
+                    
+        </tr>
+
+    <%# end %>
+    <%# end %>
+
+        </tbody>
+
+    </table>
+
+
+  <div class="actions">
+    <%#= form.submit %>
+  </div>
+<%# end %>
+
+
+<%#= link_to 'Back', usuarios_path %>
+-->
+
+
+<div class="row justify-content-center">
+   <div class="col-md-6 text-center mb-5">
+     <h2 class="heading-section">Registro Nuevo Usuario</h2>
+   </div>
+</div>
+<div class="row justify-content-center">
+   <!--<div class="col-md-6 col-lg-5">-->
+   <div>
+      <div class="login-wrap p-4 p-md-5">
+         <div class="icon d-flex align-items-center justify-content-center">
+            <img class="mt-4 mb-4" src=<%= image_path('logo_Monaco.jpg')%> alt='Logo Monaco' style="width:170px;height:120px;" />
+        </div>
+        <br>
+        <br>
+        <%#= form_tag new_usuario_path , class:"login-form" do %>
+        <%#= form_with(model: @usuario , class:"login-form" ) do |form| %>
+        <%= form_with(model: @usuario) do |form| %>
+          <% if @usuario.errors.any? %>
+            <div id="error_explanation">
+            <h2><%= pluralize(@usuario.errors.count, "error") %> prohibited this usuario from being saved:</h2>
+            
+            <ul>
+                <% @usuario.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+            </ul>
+            </div>
+          <% end %>
+
+          <div class="columnsContainer">
+ 
+            <div class="leftColumn">
+                <!--<div class="form-group">-->
+                <%#= label_tag :email ,nil, class: "sr-only"%>
+                <%= form.label :nit %>
+                <%#= form.number_field :nit, :value=> @nit,class:"form-control rounded-left", :disabled => true%>
+                <%#= form.number_field :nit, :value=> @nit,class:"form-control"%>
+                <%= form.number_field :nit, :value=> @nit, :readonly => true %>
+                <!--</div>-->
+                <br>
+                <%= form.label :cedula %>
+                <%= form.number_field :cedula %>
+                
+                <br>
+                <%= form.label :nombre %>
+                <%= form.text_field :nombre %>
+
+                <br>
+                <%= form.label :apellido %>
+                <%= form.text_field :apellido %>
+
+                <br>
+                <%= form.label :email %>
+                <%= form.text_field :email %>
+                
+                <br>
+                <%= form.label :password %>
+                <%= form.password_field :password, placeholder: "Password" %>
+                
+                <%= form.hidden_field :rol_id, :value=>"2" %>
+                     
+            </div>
+ 
+            <div class="rightColumn">
+
+                <%= label_tag :codigo %>
+                
+                <%contador=0%>
+
+                <% if @nit_clase.nil? == false %>
+                <% @nit_clase.each do |nit_clase| %> 
+
+                    <%= form.fields_for :usuarios_clases do |f| %>
+                      <!--<div class="form-group">-->
+                        <br>
+                        <%= check_box_tag "usuario[usuarios_clases_attributes][#{contador}][clase]",(nit_clase[:a]) %>
+                        <%#= f.text_field  :descripcion_clase, :value =>(nit_clase[:b]),class:"form-control rounded-right"%>
+                        <%= f.text_field  :descripcion_clase, :value =>(nit_clase[:b]), :readonly => true %>
+                        <%#= f.text_field  :descripcion_clase, :value =>(nit_clase[:b]) %>
+                        <%= f.hidden_field :nit, :value=> @nit%>
+                        <%= f.hidden_field  :proveedor, :value => (nit_clase[:c]) %>
+                        <%contador+=1%>
+                    
+                      <!--</div>-->
+
+                    <% end %>
+                <% end %>
+                <% end %>
+            </div>
+
+          </div>
+                
+          <div class="form-group d-md-flex">
+          </div>
+          <!--<div class="form-group">-->
+          <div class="input">
+              <%#= submit_tag "Ingresar", class: "btn btn-primary rounded submit p-3 px-5"%>
+              <!--<div>-->
+              <%= form.submit class: "btn btn-primary rounded submit p-3 px-5"%>
+              <%= link_to 'Back', usuarios_path, class: "btn btn-secondary rounded submit p-3 px-5" %>      
+              <!--</div>-->
+          </div>                
+                  
+        <%end%>
+
+        
+
+      </div>
+   </div>
+</div>

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nit:</strong>
+  <%= @documentos_pedido.nit %>
+</p>
+
+<p>
+  <strong>Terceri:</strong>
+  <%= @documentos_pedido.tercero %>
+</p>
+
+<p>
+  <strong>ID Clase:</strong>
+  <%= @documentos_pedido.id_clase %>
+</p>
+
+<p>
+  <strong>Clase:</strong>
+  <%= @documentos_pedido.clase %>
+</p>
+
+<p>
+  <strong>Iva:</strong>
+  <%= @documentos_pedido.iva %>
+</p>
+
+<p>
+  <strong>Valor Total:</strong>
+  <%= @documentos_pedido.valor_total %>
+</p>
+
+<%= link_to 'Edit', edit_documentos_pedido_path(@documentos_pedido) %> |
+<%= link_to 'Back', documentos_pedidos_path %>

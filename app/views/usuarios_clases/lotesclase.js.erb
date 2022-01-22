@@ -1,0 +1,42 @@
+if($('#clase_link').click){
+    if($('#new_documentos_pedido').length){
+      $('.btn_options').remove();
+	    $('#table_clase').remove();
+        $("#new_documentos_pedido").parent().append("<%= j render(:template => '/usuarios_clases/lotesclase.html.erb') %>");
+    }else{
+        $("#new_documentos_pedido").parent().append("<%= j render(:template => '/usuarios_clases/lotesclase.html.erb') %>");
+    }  
+}
+
+
+// Codigo para exportar tabla a excel
+
+$("#btnExportar").click(function(){
+  $("#table_clase").table2excel({
+    // exclude CSS class
+    exclude: ".noExl",
+    name: "Worksheet Name",
+    filename: "SomeFile", //do not include extension
+    fileext: ".xls" // file extension
+  }); 
+});
+
+//Funcion para colorear los registro dependiente de la condiconal y los valores que alla el campo día
+ $(document).ready(function(){
+  
+            // Obtenemos todos los valores contenidos en los <td> de la fila
+            // seleccionada
+            $('#lotetabla tr').each(function(){
+
+                let dialote=$(this).find('td').eq(6).text();
+
+                if (dialote <=90) {
+                  $(this).css("background-color", "#F05E27")
+
+                }else if(dialote >91 && dialote <=180 ){
+                      $(this).css("background-color", "#FCF63F")
+                    
+                  }
+            });
+            
+});

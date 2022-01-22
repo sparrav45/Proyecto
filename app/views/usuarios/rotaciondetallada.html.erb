@@ -1,0 +1,19 @@
+<div>
+Clase - Descripcion Clase
+<div>
+<br>
+<div class="menu_clases">
+    <nav>
+        <ul>
+            <% @usuarios_clases.each do |usuarios_clase| %>        
+                <li>
+                    <%= link_to (usuarios_clase.clase + ' - ' + usuarios_clase.descripcion_clase), new_usuario_documentos_pedido_path(:clase =>usuarios_clase.clase) , remote: true, :id => 'clase_link' %>
+                </li>
+            <% end %>
+        </ul>
+    </nav>
+</div>
+<br>
+<div id="new_documentos_pedido">
+</div>
+

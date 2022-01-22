@@ -1,0 +1,45 @@
+<h1>Editing Documentos Lin Pedido</h1>
+
+<%= form_with(model: [@documentos_pedido, @documentos_lin_pedido]) do |form| %>
+  <% if @documentos_lin_pedido.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@documentos_lin_pedido.errors.count, "error") %> prohibited this documentos_lin_pedido from being saved:</h2>
+
+      <ul>
+        <% @documentos_lin_pedido.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :codigo %>
+    <%= form.text_field :codigo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :descripcion %>
+    <%= form.text_field :descripcion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :costo_unitario %>
+    <%= form.number_field :costo_unitario %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cantidad %>
+    <%= form.number_field :cantidad %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+<%#= link_to 'Show', @documentos_lin_pedido %> |
+<%#= link_to 'Show', documentos_pedido_documentos_lin_pedidos_path(@documentos_pedido,@documentos_lin_pedido) %> |
+<%#= link_to 'Back', documentos_lin_pedidos_path %>
+<%= link_to 'Atras', documentos_pedido_documentos_lin_pedidos_path %> |

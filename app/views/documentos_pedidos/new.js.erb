@@ -1,0 +1,47 @@
+if($('#clase_link').click){
+    if($('#new_documentos_pedido').length){
+	    $('#form_pedido').remove();
+        $("#new_documentos_pedido").parent().append("<%= j render 'form', documentos_pedido: @documentos_pedido %>");
+    }else{
+        $("#new_documentos_pedido").parent().append("<%= j render 'form', documentos_pedido: @documentos_pedido %>");
+    }  
+}
+
+
+// Codigo para exportar tabla a excel
+
+$("#btnExportar").click(function(){
+  $("#table_clase").table2excel({
+    // exclude CSS class
+    exclude: ".noExl",
+    name: "Worksheet Name",
+    filename: "SomeFile", //do not include extension
+    fileext: ".xls" // file extension
+  }); 
+});
+
+//
+$(document).ready(function Valores(){
+  
+            // Obtenemos todos los valores contenidos en los <td> de la fila
+            // seleccionada
+          var table =$('#table_clase tbody tr');
+          
+            table.each(function(){
+              
+
+                let cantidad=$(this).find('td').eq(12).text();
+              
+                //if (cantidad > 0){
+                //let valor_unitario=$(this).find('td').eq(11).text();
+
+                //let total = valor_unitario * cantidad
+
+                //document.getElementById("documentos_pedido_valor_total").value=document.getElementById("documentos_pedido_valor_total").value+total
+                document.getElementById("documentos_pedido_valor_total").value=cantidad
+                //alert(cantidad);
+              //  }
+            });
+            
+          };
+      };

@@ -1,0 +1,22 @@
+if($('#clase_link').click){
+    if($('#new_documentos_pedido').length){
+      $('.btn_options').remove();
+	    $('#table_clase').remove();
+        $("#new_documentos_pedido").parent().append("<%= j render(:template => '/usuarios_clases/soaprotaciondetallada.html.erb') %>");
+    }else{
+        $("#new_documentos_pedido").parent().append("<%= j render(:template => '/usuarios_clases/soaprotaciondetallada.html.erb') %>");
+    }  
+}
+
+
+// Codigo para exportar tabla a excel
+
+$("#btnExportar").click(function(){
+  $("#table_clase").table2excel({
+    // exclude CSS class
+    exclude: ".noExl",
+    name: "Worksheet Name",
+    filename: "SomeFile", //do not include extension
+    fileext: ".xls" // file extension
+  }); 
+});

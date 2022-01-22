@@ -1,0 +1,58 @@
+<div>
+Clase - Descripcion Clase
+<div>
+<br>
+<div>
+    <% if current_page?(usuario_usuarios_clases_path) then %>
+        <div class="menu_clases">
+            <nav>
+                <ul>
+                    <% @usuarios_clases.each do |usuarios_clase| %>        
+                        <li>
+                                <%= link_to (usuarios_clase.clase + ' - ' + usuarios_clase.descripcion_clase), new_usuario_documentos_pedido_path(:clase =>usuarios_clase.clase) , remote: true, :id => 'clase_link' %>
+                        </li>
+                    <% end %>
+                </ul>
+            </nav>
+        </div>
+    <% elsif current_page?(usuario_RotacionDetallada_path) then %>
+        <%#= form_tag("/usuarios_clases/soaprotaciondetallada", :id => 'clase_link') do %>
+        <%= form_tag("/usuarios_clases/soaprotaciondetallada" , :id => 'clase_link' , remote: true) do %>
+            <%= month_field_tag(:fecha) %>
+            <div class="menu_clases">
+                <nav>
+                    <ul>
+                        <% @usuarios_clases.each do |usuarios_clase| %>        
+                            <li>
+                                    <%#= link_to (usuarios_clase.clase + ' - ' + usuarios_clase.descripcion_clase), usuarios_clases_soaprotaciondetallada_path(:clase =>usuarios_clase.clase) , remote: true, :id => 'clase_link' %>
+                                    <%= button_tag (usuarios_clase.clase + ' - ' + usuarios_clase.descripcion_clase), :name => :clase_btn , :value => usuarios_clase.clase , :id => 'clase_link' %>
+                            </li>
+                        <% end %>
+                    </ul>
+                </nav>
+            </div>
+        <% end %> 
+    <% elsif current_page?(usuario_LotesVencidos_path) then %>
+        <%#= form_tag("/usuarios_clases/lotesclase", :id => 'clase_link') do %>
+        <%= form_tag("/usuarios_clases/lotesclase", :id => 'clase_link' , remote: true) do %>
+            <div class="menu_clases">
+                <nav>
+                    <ul>
+                        <% @usuarios_clases.each do |usuarios_clase| %>        
+                            <li>
+                                    <%#= link_to (usuarios_clase.clase + ' - ' + usuarios_clase.descripcion_clase), usuarios_clases_soaprotaciondetallada_path(:clase =>usuarios_clase.clase) , remote: true, :id => 'clase_link' %>
+                                    <%= button_tag (usuarios_clase.clase + ' - ' + usuarios_clase.descripcion_clase), :name => :clase_btn , :value => usuarios_clase.clase , :id => 'clase_link' %>
+                            </li>
+                        <% end %>
+                    </ul>
+                </nav>
+            </div>
+        <% end %> 
+    <% end %> 
+</div>
+<br>
+<div id="new_documentos_pedido">
+
+</div>
+
+

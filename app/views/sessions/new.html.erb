@@ -1,0 +1,33 @@
+
+<div class="row justify-content-center">
+   <div class="col-md-6 text-center mb-5">
+     <h2 class="heading-section">Por favor Iniciar Session</h2>
+   </div>
+</div>
+<div class="row justify-content-center">
+   <div class="col-md-6 col-lg-5">
+      <div class="login-wrap p-4 p-md-5">
+         <div class="icon d-flex align-items-center justify-content-center">
+            <img class="mt-4 mb-4" src=<%= image_path('logo_Monaco.jpg')%> alt='Logo Monaco' style="width:170px;height:120px;" />
+        </div>
+        <br>
+        <br>
+        <%= form_tag sessions_path , class:"login-form" do %>
+                <div class="form-group">
+                        <%#= label_tag :email ,nil, class: "sr-only"%>
+                        <%= text_field_tag :email, nil ,class:"form-control rounded-left",placeholder: "Ingresar Correo Electronico" %>
+                </div>
+                <div class="form-group d-flex">
+                        <%#= label_tag :Contraseña %>
+                        <%= password_field_tag :password, nil, class:"form-control rounded-left", placeholder: "Contraseña" %>
+                </div>
+                <div class="form-group d-md-flex">
+                        <%= link_to "Registrarse", registro_path, method: :get %>
+	        </div>
+                <div class="form-group">
+                        <%= submit_tag "Ingresar", class: "btn btn-primary rounded submit p-3 px-5"%>
+                </div>
+        <%end%>
+    </div>
+   </div>
+</div>

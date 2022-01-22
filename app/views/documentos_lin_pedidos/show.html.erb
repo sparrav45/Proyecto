@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Codigo:</strong>
+  <%= @documentos_lin_pedido.codigo %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @documentos_lin_pedido.descripcion %>
+</p>
+
+<p>
+  <strong>costo unitario:</strong>
+  <%= @documentos_lin_pedido.costo_unitario %>
+</p>
+
+<p>
+  <strong>Cantidad:</strong>
+  <%= @documentos_lin_pedido.cantidad %>
+</p>
+
+<%#= link_to 'Edit', edit_documentos_lin_pedido_path(@documentos_lin_pedido) %> |
+<%= link_to 'Back', documentos_pedido_documentos_lin_pedidos_path %>

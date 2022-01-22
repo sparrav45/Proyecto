@@ -1,0 +1,160 @@
+// Place all the styles related to the documentos_pedidos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+/*
+.Table{
+        display: table;
+        
+}
+
+.Title{
+        display: table-caption;
+        text-align: center;
+        font-weight: bold;
+        font-size: larger;
+}
+
+.Heading{
+        display: table-row;
+        font-weight: bold;
+        text-align: center;
+}
+
+.Row{
+        display: table-row;
+}
+
+.Cell{
+        display: table-cell;
+        border: solid;
+        border-width: thin;
+        padding-left: 5px;
+        padding-right: 5px;
+}*/
+
+.table{
+        width: 100%;
+        border: 1 px solid #ccc;
+        border-collapse: collapse;
+        margin: 0;
+        padding: 0;
+        table-layout: fixed;
+        font: 13px verdana;
+        //display: table;
+}
+
+.right_txt {
+        text-align: right;
+        padding-right: 2px;
+    }
+
+.table tr {
+        background-color: #F8F8F8;
+        border: 1px solid #ddd;
+}
+
+.table th {
+        display: table-cell;
+        vertical-align: inherit;
+        font-weight: bold;
+        text-align: -internal-center;
+    }
+
+/*.table th, .table td{
+        width: 120px;
+        font-size: 14px ;
+        padding: 18px;
+        text-align: left;
+        
+}*/
+
+.th {
+        width: 100px;
+        font-size: 14px ;
+        padding: 18px;
+        text-align: left;
+}
+
+.th2 {
+        width: 95px;
+        font-size: 14px ;
+        padding: 18px;
+        text-align: left;
+}
+
+
+.td {
+        width: 40px;
+        font-size: 14px ;
+        padding: 18px;
+        text-align: left;
+}
+
+.table td input{
+        width: 55px;
+}
+
+.table thead {
+        text-transform: uppercase;
+        background-color: #ddd;
+}
+
+.table tbody tr:hover{
+        background-color: rgba(0,0,0,0.2);       
+}
+
+.table tbody td:hover{
+        background-color: rgba(0,0,0,0.3);       
+}
+
+.btn_options span {
+        background-size: 30px 30px;
+        width: 25px;
+        height: 25px;
+        padding: 3px;
+        cursor: pointer;
+        display: inline-block;
+        margin-right: 20px;
+    }
+
+.btn_download_csv {
+        //background-image: image-url("excel-icon.png")
+        background-image: url(asset-path('excel-icon.png'))
+
+        //<%= image_path('excel-icon.png')%>
+    }
+
+
+@media screen and (max-width: 700px){
+        .table{
+                border: 0px;   
+        }
+        
+        .table thead{
+                display: none;
+        }
+
+        .table tr{
+                margin-bottom: 8px;
+                border-bottom: 4px solid #ddd;
+                display: block;
+        }
+
+        .table th, .table td{
+                font-size: 10px;
+        }
+
+        .table td{
+                display: block;
+                border-bottom: 1px solid #ddd;
+                text-align: right;
+        }
+
+        .table td:last-child{
+                border-bottom: 0px;
+        }
+
+        .table td::before{
+                content: attr(data-label);
+        }
+}

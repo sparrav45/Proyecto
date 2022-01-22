@@ -1,0 +1,42 @@
+  
+  <div class='btn_options'>
+    <span class='btn_download_csv' id='btnExportar'></span>
+  </div>
+
+  <table class="table" id="table_clase">
+    <thead>
+      <tr>
+        <th>Tipo</th>
+        <th>Numero</th>
+        <th>Fecha</th>
+        <th>Cliente</th>
+        <th>Codigo</th>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Valor Unitario</th>
+        <th>Total</th>
+        <th>Vendedor</th>
+        <th>Transferencista</th>
+      </tr>
+    </thead>
+
+    <tbody>
+        <% if @rotacion_detallada %>
+          <% @rotacion_detallada.each do |rotacion_detallada| %> 
+                    <tr>
+                            <td class='left_txt'><%= rotacion_detallada[:tipo] %></td>
+                            <td class='left_txt'><%= rotacion_detallada[:numero] %></td>
+                            <td class='right_txt'><%= label_tag  :mes1, I18n.l(rotacion_detallada[:fecha],format: '%d de %B de %Y') %></td>
+                            <td class='right_txt'><%= label_tag  :mes2, rotacion_detallada[:column1] %></td>
+                            <td class='right_txt'><%= label_tag  :mes3, rotacion_detallada[:codigo] %></td>
+                            <td class='right_txt'><%= label_tag  :mes4, rotacion_detallada[:descripcion] %></td>
+                            <td class='right_txt'><%= label_tag  :mes5, rotacion_detallada[:cantidad] %></td>
+                            <td class='right_txt'><%= label_tag  :mes6, rotacion_detallada[:valor_unitario] %></td>
+                            <td class='right_txt'><%= label_tag  :mes_actual, rotacion_detallada[:total]%></td>
+                            <td class='right_txt'><%= label_tag  :total_rotacion, rotacion_detallada[:nombre_vendedor] %></td>
+                            <td class='right_txt'><%= label_tag  :stock, rotacion_detallada[:transferencista]%></td>
+                    </tr>   
+          <% end %>
+        <% end %>
+    </tbody>
+  </table>

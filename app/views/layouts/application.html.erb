@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Proyectoprueba</title>
+<!-- <meta name="viewport" content="width=device-width,initial-scale=1"> -->    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">-->
+
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
+
+
+  </head>
+
+  <body>
+        <div class='wrapper-general'>
+            <header class='menu'>
+
+                <nav>
+                    <ul>     
+                        <% if logged_in? && current_user.rol_id == 1 %>
+                            
+                            <li>
+                                <%= link_to "Usuarios", usuarios_path %>
+                            </li>
+                            <li>
+                                <%= link_to "Estado e Historial de Sugerido de compras", documentos_pedidos_path %>
+                            </li>
+                            <li>
+                                Opcion cuatro
+                            </li>
+                            <li>
+                                <%= link_to "Logout", sessions_path, method: :delete %>
+                            </li>
+                            <li>
+                                <div class ='user_info'><%=  current_user.email + ' ' + current_user.nombre + ' ' + current_user.apellido %></div>
+                            </li>
+                        <% elsif logged_in? && current_user.rol_id == 2 %>
+                            
+                            <li>
+                                <%= link_to "Rotacion y Sugerido de compras", usuario_usuarios_clases_path(current_user.id) %>
+                            </li>
+                            <li>
+                                <%= link_to "Rotacion Detallada", usuario_RotacionDetallada_path(current_user.id) %>
+                            </li>
+                            <li>
+                                <%= link_to "Estado e Historial de Sugerido de compras", usuario_documentos_pedidos_path((current_user.id)) %>
+                            </li>
+                            <li>
+                                <%= link_to "Lotes Vencidos o Proximos ha Vencer", usuario_LotesVencidos_path((current_user.id)) %>
+                            </li>
+                            <li>
+                                <%= link_to "Logout", sessions_path, method: :delete %>
+                            </li>
+                            <li>
+                                <div class ='user_info'><%=  current_user.email + ' ' + current_user.nombre + ' ' + current_user.apellido %></div>
+                            </li>
+                        <% end %>
+                    </ul>
+                </nav>
+              <!--<section class="ftco-section">--> 
+            </header>
+            <div>
+                <%= yield %>
+            </div>
+            <footer>
+                <div class="copyright">
+                    <a href="http://www.distrimonaco.com" target="_blank">
+                        <img class="mt-4 mb-4" src=<%= image_path('Logo_Monaco_Aliadas_preview_rev_1.png')%> alt='Logo Grupo Monaco'  style="width:150px;height:60px;" />
+                    <a>
+                </div>
+            </footer>
+        </div>
+              <!--</section>-->
+  </body>
+</html>

@@ -1,0 +1,260 @@
+/*
+body {
+  background-color: #fff;
+  color: #333;
+  margin: 33px; }
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px; }
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px; }
+
+a {
+  color: #000; }
+
+a:visited {
+  color: #666; }
+
+a:hover {
+  color: #fff;
+  background-color: #000; }
+
+th {
+  padding-bottom: 5px; }
+
+td {
+  padding: 0 5px 7px; }
+
+div.field,
+div.actions {
+  margin-bottom: 10px; }
+
+#notice {
+  color: green; }
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table; }
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px 7px 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0; }
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px -7px 0;
+  background-color: #c00;
+  color: #fff; }
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square; }
+
+label {
+  display: block; }
+
+--------------------------------------------------------------------------------------------------------  
+
+*{
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+}
+  body {
+    background-color: #fff;
+    color: #333; 
+  }
+  
+  body, p, ol, ul, td {
+      font-family: verdana, arial, helvetica, sans­serif;
+      font-size:   13px;
+      line-height: 18px;
+    }
+  
+  pre {
+    background-color: #eee;
+    padding: 10px;
+    font-size: 11px;
+  }
+
+  a {
+    color: #000;
+  }
+
+  a:visited {
+    color: #666;
+  }
+
+  a:hover {
+    color: #fff;
+    background-color:#000;
+  }
+
+  .fieldWithErrors {
+    padding: 2px;
+    background-color: red;
+    display: table;
+  }
+
+  #errorExplanation {
+      width: 400px;
+      border: 2px solid red;
+      padding: 7px;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      background-color:  #f0f0f0;
+    }
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: ­7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+  #errorExplanation p {
+    color: #333;
+    margin-bottom: 0;
+    padding: 5px;
+  }
+#errorExplanation ul li {
+    font-size: 12px;
+    list-style: square;
+  }*/
+/*#menuhoriz ul li {
+    display: inline;
+    padding: 2px 7px;*/ /*Separar el texto*/
+    /*margin:5px; *//* Separar los botones */
+  /*  background-color:#E4E4E4;*/ /* Color de fondo */
+/*  }
+    
+#menuhoriz ul li:hover {
+      background-color: #AEB404; */ /* Color de fondo sobre el boton */
+      /*cursor: pointer;*/ /* cambiar el aspecto del puntero */
+   /* }
+    
+#menuhoriz ul {
+      /* Linea para delimitar la botonera */
+     /* border-bottom-width: 1px;
+      border-bottom-style: solid;
+      border-bottom-color: #E4E4E4;
+    }
+table tr.pair {
+  background:#FFFFCC none repeat scroll 0 0;
+  color:inherit;
+}
+table tr.odd {
+  background: #fff;
+}
+table th {
+  
+  background-color: inherit;
+  font-weight: bold;
+  text-align:left;
+  font-size: 1em
+}*/
+
+
+/*!
+ * Bootstrap v4.3.1 (https://getbootstrap.com/)
+ * Copyright 2011-2019 The Bootstrap Authors
+ * Copyright 2011-2019 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+ 
+ body{
+  font: 13px verdana;
+ }
+ 
+
+ .menu
+ {
+  overflow: hidden;
+  background-color: #0065A3;
+  border-radius: 5px;
+ }
+
+ .menu nav{
+  height: auto; /*Junto a overflow: hidden; aplicará a nuestro elemento nav el mismo alto que el más alto de sus elementos hijos */ 
+  margin: 0 auto; /* Centro el contenedor */
+  overflow: hidden;
+  text-align: left;
+  width: 960px; /* Defino el ancho de mi página */
+}
+ 
+
+
+ .menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+  /*background-color: #0065A3;*/
+}
+
+.menu li {
+  float: left;
+}
+
+.menu li a {
+  display: block;
+  color: #C1D1E5;
+  text-align: center;
+  align-items: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font: 16px verdana;
+}
+
+/* Change the link color to #111 (black) on hover*/
+.menu li a:hover {
+  background-color: #EB690B;
+}
+
+
+.wrapper-general {
+  background: #fff;
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+  -webkit-box-shadow: 0px 0px 10px #666;
+  -moz-box-shadow: 0px 0px 10px #666;
+  box-shadow: 0px 0px 10px #666;
+}
+
+
+footer {
+  background-color: #b7b7b7;
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 20px;
+  margin-top: 15px;
+}
+
+footer .copyright {
+  position: static;
+  float: right;
+}
+
+.user_info {
+  float: right;
+  text-align: right;
+  font-family: verdana;
+  font-size: 15px;
+  color: #666;
+}

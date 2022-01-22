@@ -1,0 +1,2 @@
+module DocumentosLinPedidosHelper
+end

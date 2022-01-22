@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  codigo: 1
+  descripcion: MyString
+  id_pedido: 1
+  valor_unitario: 1
+  porcentaje_iva: 1
+  valor_iva_unitario: 1
+  cantidad: 1
+
+two:
+  codigo: 1
+  descripcion: MyString
+  id_pedido: 1
+  valor_unitario: 1
+  porcentaje_iva: 1
+  valor_iva_unitario: 1
+  cantidad: 1

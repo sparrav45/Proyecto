@@ -1,0 +1,33 @@
+  <div class='btn_options'>
+    <span class='btn_download_csv' id='btnExportar'></span>
+  </div>
+
+  <table class="table" id="table_clase">
+    <thead>
+      <tr>
+        <th>Codigo Barras</th>
+        <th>Codigo</th>
+        <th>Descripcion</th>
+        <th>Lote</th>
+        <th>Fecha Vencimiento</th>
+        <th>Stock</th>
+        <th>Dias Vencidos</th>
+      </tr>
+    </thead>
+
+    <tbody id='lotetabla'>
+        <% if @lotes %>
+          <% @lotes.each do |lote| %> 
+                    <tr id='lotelinea'>
+                            <td class='left_txt'><%= lote[:codigo_barras] %></td>
+                            <td class='left_txt'><%= lote[:codigo] %></td>
+                            <td class='left_txt'><%= lote[:descripcion] %></td>
+                            <td class='left_txt'><%= lote[:lote] %></td>
+                            <td class='left_txt'><%=  I18n.l(lote[:lote_vcmto],format: '%d de %B de %Y') %></td>
+                            <td class='left_txt'><%= lote[:stock] %></td>
+                            <td class='left_txt' id='dia'><%= lote[:dias_vecimiento] %></td>
+                    </tr>   
+          <% end %>
+        <% end %>
+    </tbody>
+  </table>
